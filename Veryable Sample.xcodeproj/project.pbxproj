@@ -20,6 +20,7 @@
 		6A948B01265FF5CA005A22DA /* ViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A948B00265FF5CA005A22DA /* ViewColor.swift */; };
 		D43DFC6527F7C99900BFB078 /* AccountListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6427F7C99900BFB078 /* AccountListModal.swift */; };
 		D43DFC6727F8225C00BFB078 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6627F8225C00BFB078 /* Router.swift */; };
+		D43DFC6A27F8D94B00BFB078 /* AccountListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6927F8D94B00BFB078 /* AccountListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CDFCC6589E8234DDBAFB6174 /* Pods_Veryable_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Veryable_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43DFC6427F7C99900BFB078 /* AccountListModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListModal.swift; sourceTree = "<group>"; };
 		D43DFC6627F8225C00BFB078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D43DFC6927F8D94B00BFB078 /* AccountListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		6A948AE1265FEFB0005A22DA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D43DFC6927F8D94B00BFB078 /* AccountListTableViewCell.swift */,
 				6A948AE6265FEFDA005A22DA /* AccountListView.swift */,
 			);
 			path = View;
@@ -319,6 +322,7 @@
 				D43DFC6527F7C99900BFB078 /* AccountListModal.swift in Sources */,
 				6A948AFF265FF490005A22DA /* UIFont+Vry.swift in Sources */,
 				6A948AE7265FEFDB005A22DA /* AccountListView.swift in Sources */,
+				D43DFC6A27F8D94B00BFB078 /* AccountListTableViewCell.swift in Sources */,
 				6A948AEC265FF0A2005A22DA /* AccountRepo.swift in Sources */,
 				6A948AFB265FF403005A22DA /* VryPallete.swift in Sources */,
 			);

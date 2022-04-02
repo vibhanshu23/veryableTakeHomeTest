@@ -9,30 +9,84 @@
 import Foundation
 import UIKit
 
-class AccountListViewController: UIViewController {
+class AccountListViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     //MARK: Public API
-
+    
     //MARK: Inits
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Accounts".uppercased()
     }
     required init?(coder: NSCoder) { nil }
-
-    var variable1 = ""
+    
+    
     
     //MARK: Overrides
     override func loadView() {
         view = customView
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableOnDataRefresh), name: Notification.Name("Data Refreshed"), object: nil)
+        
     }
-
+    
+    
+    
+    @objc func reloadTableOnDataRefresh(){
+        
+        customView.reloadTableOnDataRefresh()
+        
+    }
+    
+    
+    
     //MARK: Private members
-
+    
     //MARK: Lazy Loads
     private lazy var customView: AccountListView = {
-        return AccountListView(delegate: self)
-//        AccountListView(delegate: self, withTableViewDelegate: self, withTableViewDatasource: self)
+        //        return AccountListView(delegate: self)
+        AccountListView(delegate: self, withTableViewDelegate: self, withTableViewDatasource: self)
     }()
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        AccountListModal.shared.getData().count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        AccountListModal.shared.getData()[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AccountListTableViewCell
+        
+        let element = AccountListModal.shared.getData()[indexPath.section][indexPath.row]
+        
+        cell.lblAccountName.text = element.accountName
+        cell.lblDesc.text = element.desc
+        if(element.accountType == "card"){
+            cell.lblTertiary.text = "Bank Account: ACH - Same Day"
+        }
+        else{
+            cell.lblTertiary.text = "Card: Instant"
+
+        }
+
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     
     
 }
@@ -42,23 +96,5 @@ extension AccountListViewController: AccountListDelegate {
         return "data"
     }
     
-
+    
 }
-extension AccountListViewController: UITableViewDelegate {
-    
-
-}
-extension AccountListViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
-    
-
-}
-

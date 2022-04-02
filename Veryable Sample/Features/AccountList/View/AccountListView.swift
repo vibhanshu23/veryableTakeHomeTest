@@ -37,14 +37,30 @@ class AccountListView: UIView {
 
     private func setup() {
         backgroundColor = ViewColor.background.color
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableOnDataRefresh), name: Notification.Name("Data Refreshed"), object: nil)
+
         constrain()
     }
 
+    func reloadTableOnDataRefresh(){
+        
+        print("did recieve notification")
+        tblList.reloadData()
+        
+    }
+    
     private func constrain() {
         helloLabel.snp.makeConstraints {
             $0.center.equalTo(self)
         }
+        tblList.snp.makeConstraints {
+            $0.center.equalTo(self)
+            $0.height.equalTo(self)
+            $0.width.equalTo(self)
+            $0.top.equalTo(self)
+
+        }
+        
     }
 
     //MARK: Overrides
@@ -69,6 +85,13 @@ class AccountListView: UIView {
         let tbl = UITableView()
         tbl.delegate = self.tblDel
         tbl.dataSource = self.tblDataSource
+        
+        tbl.translatesAutoresizingMaskIntoConstraints = false
+        tbl.register(AccountListTableViewCell.self, forCellReuseIdentifier: "cell")
+        tbl.rowHeight = 200
+        tbl.layer.backgroundColor = UIColor.blue.cgColor
+        
+        
         addSubview(tbl)
         return tbl
         

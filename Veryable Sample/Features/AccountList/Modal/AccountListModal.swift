@@ -14,17 +14,21 @@ class AccountListModal{
     static let shared = AccountListModal()
     
     var isInitialized = false
-    var arrData = [ModalAccount]() //expose only get not set
+    var arrData = [[ModalAccount]]() //expose only get not set
     
     init(){
-        getData()
+        getNetworkData()
     }
     
     func isInitializedForData()-> Bool{
         return isInitialized
     }
     
-    func getData(){
+    func getData()-> [[ModalAccount]]{
+        return arrData
+    }
+    
+    func getNetworkData(){
         
         let request = AF.request("https://veryable-public-assets.s3.us-east-2.amazonaws.com/veryable.json")
         request.responseJSON { [self] (response) in
@@ -32,8 +36,17 @@ class AccountListModal{
             do {
               let myDataArray = try JSONDecoder().decode([ModalAccount].self, from: response.data!)
                 print(myDataArray[0].id) // prints "Mustafa"
-                self.arrData = myDataArray
                 
+                let filteredArray1 = myDataArray.filter { $0.accountType == "card" }
+                let filteredArray2 = myDataArray.filter { $0.accountType == "bank" }
+                
+                var combinedList = [[ModalAccount]]()
+                combinedList.append(filteredArray1)
+                combinedList.append(filteredArray2)
+                self.arrData = combinedList
+
+                self.isInitialized = true
+                NotificationCenter.default.post(name: Notification.Name("Data Refreshed"), object: nil) //change hardcoding to global enum
             } catch(let error) {
               print(error)
             }
