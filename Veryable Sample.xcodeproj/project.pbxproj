@@ -21,6 +21,10 @@
 		D43DFC6527F7C99900BFB078 /* AccountListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6427F7C99900BFB078 /* AccountListModal.swift */; };
 		D43DFC6727F8225C00BFB078 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6627F8225C00BFB078 /* Router.swift */; };
 		D43DFC6A27F8D94B00BFB078 /* AccountListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6927F8D94B00BFB078 /* AccountListTableViewCell.swift */; };
+		D43DFC6D27F8ED4E00BFB078 /* AccountDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6C27F8ED4E00BFB078 /* AccountDetailController.swift */; };
+		D43DFC7027F8EE2E00BFB078 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC6F27F8EE2E00BFB078 /* AccountDetailView.swift */; };
+		D43DFC7227F91FEB00BFB078 /* AccountListTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC7127F91FEB00BFB078 /* AccountListTableHeader.swift */; };
+		D43DFC7527F933AD00BFB078 /* Global constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43DFC7427F933AD00BFB078 /* Global constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		D43DFC6427F7C99900BFB078 /* AccountListModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListModal.swift; sourceTree = "<group>"; };
 		D43DFC6627F8225C00BFB078 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D43DFC6927F8D94B00BFB078 /* AccountListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewCell.swift; sourceTree = "<group>"; };
+		D43DFC6C27F8ED4E00BFB078 /* AccountDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailController.swift; sourceTree = "<group>"; };
+		D43DFC6F27F8EE2E00BFB078 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		D43DFC7127F91FEB00BFB078 /* AccountListTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableHeader.swift; sourceTree = "<group>"; };
+		D43DFC7427F933AD00BFB078 /* Global constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Global constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		6A948ADF265FEEA0005A22DA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D43DFC6B27F8ED3100BFB078 /* Acoount Detail */,
 				6A948AE0265FEEB7005A22DA /* AccountList */,
 			);
 			path = Features;
@@ -120,6 +129,7 @@
 			children = (
 				D43DFC6927F8D94B00BFB078 /* AccountListTableViewCell.swift */,
 				6A948AE6265FEFDA005A22DA /* AccountListView.swift */,
+				D43DFC7127F91FEB00BFB078 /* AccountListTableHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -163,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				6A948AFD265FF47B005A22DA /* Fonts */,
+				D43DFC7327F9338A00BFB078 /* Constants */,
 				6A948AF1265FF403005A22DA /* Colors */,
 			);
 			path = VryCustom;
@@ -198,6 +209,31 @@
 				D43DFC6627F8225C00BFB078 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		D43DFC6B27F8ED3100BFB078 /* Acoount Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D43DFC6C27F8ED4E00BFB078 /* AccountDetailController.swift */,
+				D43DFC6E27F8EE1C00BFB078 /* View */,
+			);
+			path = "Acoount Detail";
+			sourceTree = "<group>";
+		};
+		D43DFC6E27F8EE1C00BFB078 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D43DFC6F27F8EE2E00BFB078 /* AccountDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D43DFC7327F9338A00BFB078 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D43DFC7427F933AD00BFB078 /* Global constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,17 +350,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D43DFC6727F8225C00BFB078 /* Router.swift in Sources */,
+				D43DFC6D27F8ED4E00BFB078 /* AccountDetailController.swift in Sources */,
 				6A948AF8265FF403005A22DA /* VColor.swift in Sources */,
 				515EC6B3242E5FBA00B21DBB /* AppDelegate.swift in Sources */,
 				6A948AE5265FEFCB005A22DA /* AccountListViewController.swift in Sources */,
 				6A948B01265FF5CA005A22DA /* ViewColor.swift in Sources */,
+				D43DFC7227F91FEB00BFB078 /* AccountListTableHeader.swift in Sources */,
 				6A948AEE265FF0E5005A22DA /* Account.swift in Sources */,
 				D43DFC6527F7C99900BFB078 /* AccountListModal.swift in Sources */,
 				6A948AFF265FF490005A22DA /* UIFont+Vry.swift in Sources */,
 				6A948AE7265FEFDB005A22DA /* AccountListView.swift in Sources */,
 				D43DFC6A27F8D94B00BFB078 /* AccountListTableViewCell.swift in Sources */,
+				D43DFC7027F8EE2E00BFB078 /* AccountDetailView.swift in Sources */,
 				6A948AEC265FF0A2005A22DA /* AccountRepo.swift in Sources */,
 				6A948AFB265FF403005A22DA /* VryPallete.swift in Sources */,
+				D43DFC7527F933AD00BFB078 /* Global constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = V4PME44294;
+				DEVELOPMENT_TEAM = NY37U8R2HF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Veryable Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -473,7 +513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = V4PME44294;
+				DEVELOPMENT_TEAM = NY37U8R2HF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Veryable Sample/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

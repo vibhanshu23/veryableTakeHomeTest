@@ -37,8 +37,8 @@ class AccountListModal{
               let myDataArray = try JSONDecoder().decode([ModalAccount].self, from: response.data!)
                 print(myDataArray[0].id) // prints "Mustafa"
                 
-                let filteredArray1 = myDataArray.filter { $0.accountType == "card" }
-                let filteredArray2 = myDataArray.filter { $0.accountType == "bank" }
+                let filteredArray1 = myDataArray.filter { $0.accountType == "bank" }
+                let filteredArray2 = myDataArray.filter { $0.accountType == "card" }
                 
                 var combinedList = [[ModalAccount]]()
                 combinedList.append(filteredArray1)

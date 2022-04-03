@@ -44,6 +44,20 @@ public enum VGrey: VColor {
     }
 }
 
+public enum VCustomGrey: VColor {
+    case normal, light, dark, header, headerTitle
+    public var color: UIColor {
+        switch self {
+            case .normal: return UIColor(hexString: "#4A4A4A")
+            case .dark: return UIColor(hexString: "#CCCECF")
+            case .light: return UIColor(hexString: "#7E7E7E")
+        case .header: return UIColor(hexString: "#F2F5F6")
+        case .headerTitle: return UIColor(hexString: "#5F5F5F")
+           
+        }
+    }
+}
+
 public enum VBrightGreen: VColor {
     case normal, light, dark
     public var color: UIColor {
