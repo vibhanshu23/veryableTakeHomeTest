@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootViewController: AccountListViewController()
         )
         window?.makeKeyAndVisible()
-        AccountListModal.shared
+        _ = AccountModalDataHandler.shared
         return true
     }
     

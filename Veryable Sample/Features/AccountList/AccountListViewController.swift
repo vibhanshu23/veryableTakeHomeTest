@@ -15,7 +15,7 @@ class AccountListViewController: UIViewController, UITableViewDelegate,UITableVi
     //MARK: Inits
     init() {
         super.init(nibName: nil, bundle: nil)
-       
+        
         UINavigationBar.appearance().backgroundColor = .white
         let attributes = [NSAttributedString.Key.font: UIFont.vryAvenirNextRegular(18), .foregroundColor: VCustomGrey.normal.color]
         UINavigationBar.appearance().titleTextAttributes = attributes
@@ -32,18 +32,32 @@ class AccountListViewController: UIViewController, UITableViewDelegate,UITableVi
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         NotificationCenter.default.removeObserver(self)
         self.title = ""
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-       
+        
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableOnDataRefresh), name: Notification.Name("Data Refreshed"), object: nil)
         self.title = "Accounts".uppercased()
     }
     
+    
+    //MARK: Private members
+    
+    //MARK: Lazy Loads
+    private lazy var customView: AccountListView = {
+        let accountLstVw = AccountListView(withTableViewDelegate: self, withTableViewDatasource: self)
+        if(!AccountModalDataHandler.shared.isInitialized){
+            accountLstVw.showLoadingScreen()
+        }
+        return accountLstVw
+    }()
+    
+    
+    //MARK: Delegate functions
     
     @objc func reloadTableOnDataRefresh(){
         
@@ -51,30 +65,19 @@ class AccountListViewController: UIViewController, UITableViewDelegate,UITableVi
         
     }
     
-    
-    
-    //MARK: Private members
-    
-    //MARK: Lazy Loads
-    private lazy var customView: AccountListView = {
-        //        return AccountListView(delegate: self)
-        AccountListView(delegate: self, withTableViewDelegate: self, withTableViewDatasource: self)
-    }()
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        AccountListModal.shared.getData().count
+        AccountModalDataHandler.shared.getData().count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        AccountListModal.shared.getData()[section].count
+        AccountModalDataHandler.shared.getData()[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AccountListTableViewCell
         
-        let element = AccountListModal.shared.getData()[indexPath.section][indexPath.row]
+        let element = AccountModalDataHandler.shared.getData()[indexPath.section][indexPath.row]
         
         cell.lblAccountName.text = element.accountName
         cell.lblDesc.text = element.desc
@@ -85,9 +88,9 @@ class AccountListViewController: UIViewController, UITableViewDelegate,UITableVi
         else{ //bank
             cell.lblTertiary.text = "Bank Account: ACH - Same Day"
             cell.imgDisplayType.image = UIImage(named: "bank")
-
+            
         }
-
+        
         return cell
         
     }
@@ -98,7 +101,7 @@ class AccountListViewController: UIViewController, UITableViewDelegate,UITableVi
         let accountDetailVC = AccountDetailController()
         self.navigationController?.pushViewController(accountDetailVC, animated: true)
         
-        accountDetailVC.setDataForCurrentScreen(item: AccountListModal.shared.getData()[indexPath.section][indexPath.row]) //change to id
+        accountDetailVC.setDataForCurrentScreen(item: AccountModalDataHandler.shared.getData()[indexPath.section][indexPath.row]) //change to id
         
     }
     
@@ -120,14 +123,6 @@ class AccountListViewController: UIViewController, UITableViewDelegate,UITableVi
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
-        
-    
 }
 
-extension AccountListViewController: AccountListDelegate {
-    func getData() -> String {
-        return "data"
-    }
-    
-    
-}
+

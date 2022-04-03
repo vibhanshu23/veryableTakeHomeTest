@@ -9,3 +9,4 @@
 import Foundation
 
 struct Account {}
+//Did not use this class. Refer to AccountListModal instead

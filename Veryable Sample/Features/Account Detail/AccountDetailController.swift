@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 
 class AccountDetailController:UIViewController, AccountDetailDelegate{
-
     
+    
+    //MARK: Init
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -19,19 +20,22 @@ class AccountDetailController:UIViewController, AccountDetailDelegate{
         UINavigationBar.appearance().backgroundColor = .white
         let attributes = [NSAttributedString.Key.font: UIFont.vryAvenirNextRegular(18), .foregroundColor: VCustomGrey.normal.color]
         UINavigationBar.appearance().titleTextAttributes = attributes
-
+        
     }
     required init?(coder: NSCoder) { nil }
-    
-    
     
     //MARK: Overrides
     override func loadView() {
         view = customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
     
-    func setDataForCurrentScreen(item: ModalAccount){
+    //MARK: Setup code for Detail
+    func setDataForCurrentScreen(item: AccountModal){
         customView.lblAccountName.text = item.accountName
         customView.lblDesc.text = item.desc
         if(item.accountType == "card"){
@@ -39,24 +43,23 @@ class AccountDetailController:UIViewController, AccountDetailDelegate{
         }
         else{ //bank
             customView.imgDisplayType.image = UIImage(named: "bank")
-
+            
         }
-
+        
     }
     
+    //MARK: Lazy Loads
+    
     private lazy var customView: AccountDetailView = {
-        //        return AccountListView(delegate: self)
-       return AccountDetailView(delegate: self)
+        return AccountDetailView(delegate: self)
     }()
     
-
+    
+    //MARK: Button actions delegate
     
     func onClickDone() {
         self.navigationController?.popViewController(animated: true)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    
     
 }

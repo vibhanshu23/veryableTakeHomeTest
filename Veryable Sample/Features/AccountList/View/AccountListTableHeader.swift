@@ -11,8 +11,9 @@ import UIKit
 import SnapKit
 
 class AccountListTableHeader: UITableViewHeaderFooterView {
-
-
+    
+    //MARK: Inits
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setup()
@@ -22,34 +23,34 @@ class AccountListTableHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Setup
+    
     func setup() {
         contentView.backgroundColor = VCustomGrey.header.color
-
-//        cardView.snp.makeConstraints {
-//            $0.leading.equalTo(0)
-//            $0.trailing.equalTo(0)
-//            $0.top.equalTo(0)
-//            $0.bottom.equalTo(0)
-//            $0.height.equalTo(contentView)
-//            $0.width.equalTo(contentView).offset(0)
-//
-//        }
+        constraints()
+    }
+    
+    //MARK: Constraints
+    
+    func constraints(){
         lblHeader.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
             $0.left.equalTo(16)
         }
-             
     }
     
+    //MARK: Lazy Loads
+    
     lazy var lblHeader: UILabel = {
-       let label = UILabel()
-       label.text = "@lblDesc"
-       label.textAlignment = .left
+        let label = UILabel()
+        label.text = "@lblDesc"
+        label.textAlignment = .left
         label.textColor = VCustomGrey.headerTitle.color
         label.font = .vryAvenirNextBold(16)
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
-
-       return label
+        
+        return label
     }()
+    
 }
